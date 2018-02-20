@@ -84,6 +84,8 @@ typedef NS_ENUM(NSInteger, PYPhotosViewPageType) { // 分页类型
 @property (nonatomic, assign) PYPhotosViewState photosState;
 /** 是否隐藏删除按钮(未发布状态) */
 @property (nonatomic, assign) BOOL hideDeleteView;
+
+@property (nonatomic, assign) BOOL hideAddButton;
 /** 图片布局（默认为流水布局） */
 @property (nonatomic, assign) PYPhotosViewLayoutType layoutType;
 /** 图片分页指示类型(默认为pageControll。当图片超过九张，改为label显示) */

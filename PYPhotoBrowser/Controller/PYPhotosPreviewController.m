@@ -46,7 +46,7 @@
     // 创建预览控制器
     PYPhotosPreviewController *readerVc = [[PYPhotosPreviewController alloc] initWithCollectionViewLayout:layout];
     
-    readerVc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:readerVc action:@selector(backAction)];
+    readerVc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"common.back", @"back") style:UIBarButtonItemStylePlain target:readerVc action:@selector(backAction)];
     readerVc.navigationController.navigationBar.backIndicatorImage = nil;
     readerVc.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
     readerVc.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:readerVc action:@selector(trashDidClicked)];
@@ -91,24 +91,24 @@
 /* 返回状态栏是否隐藏 */
 - (BOOL)prefersStatusBarHidden
 {
-    return self.isStatusBarHidden;
+    return false;
 }
 
 /* 改变状态栏状态 */
 - (void)changeNavBarState
 {
-    // 如果正在执行动画，直接返回
-    if (self.isNavBarAnimating) return;
-    CGFloat duration = 0.5;
-    [UIView animateWithDuration:duration animations:^{
-        self.navBarAnimating = YES;
-        self.statusBarHidden = self.navigationController.navigationBar.py_y > 0;
-        [self setNeedsStatusBarAppearanceUpdate];
-        self.navigationController.navigationBar.py_y = self.statusBarHidden ? -self.navigationController.navigationBar.py_height : [UIApplication sharedApplication].statusBarFrame.size.height;
-    } completion:nil];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.navBarAnimating = NO;
-    });
+//    // 如果正在执行动画，直接返回
+//    if (self.isNavBarAnimating) return;
+//    CGFloat duration = 0.5;
+//    [UIView animateWithDuration:duration animations:^{
+//        self.navBarAnimating = YES;
+//        self.statusBarHidden = self.navigationController.navigationBar.py_y > 0;
+//        [self setNeedsStatusBarAppearanceUpdate];
+//        self.navigationController.navigationBar.py_y = self.statusBarHidden ? -self.navigationController.navigationBar.py_height : [UIApplication sharedApplication].statusBarFrame.size.height;
+//    } completion:nil];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        self.navBarAnimating = NO;
+//    });
 }
 
 /** 关闭 */
@@ -132,7 +132,11 @@
 /** 点击删除照片 */
 - (void)trashDidClicked
 {
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"要删除这张照片么" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:nil, nil];
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"portfolio_view.remove_image", @"")
+                                                       delegate:self
+                                              cancelButtonTitle:NSLocalizedString(@"common.cancel", @"cancel")
+                                         destructiveButtonTitle:NSLocalizedString(@"common.remove", @"remove")
+                                              otherButtonTitles:nil, nil];
     [sheet showInView:self.view];
 }
 
@@ -175,7 +179,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) { // 删除
-        [MBProgressHUD py_showSuccess:@"已删除" toView:self.view];// 计算页数
+        [MBProgressHUD py_showSuccess:NSLocalizedString(@"common.done", @"done") toView:self.view];// 计算页数
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ // 删除图片
             [self deleteImage];
         });

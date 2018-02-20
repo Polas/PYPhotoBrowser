@@ -239,7 +239,7 @@ static NSInteger _photosViewCount;
     
     _photos = photos;
     // 移除添加图片按钮
-    [self.addImageButton removeFromSuperview];
+//    [self.addImageButton removeFromSuperview];
     
     NSInteger photoCount = self.photos.count;
     // 添加相应的图片
@@ -293,7 +293,7 @@ static NSInteger _photosViewCount;
     _images = images;
     
     // 移除添加图片按钮
-    [self.addImageButton removeFromSuperview];
+//    [self.addImageButton removeFromSuperview];
     
     if (self.autoSetPhotoState) {
         self.photosState = PYPhotosViewStateWillCompose;
@@ -504,6 +504,13 @@ static NSInteger _photosViewCount;
         if (self.images.count == 0) { // 数组为空
             self.py_size = self.addImageButton.py_size;
         }
+    }
+}
+
+-(void) setHideAddButton:(BOOL) val{
+    self.hideDeleteView = val;
+    if (self.addImageButton != NULL){
+        [self.addImageButton setHidden:val];
     }
 }
 
