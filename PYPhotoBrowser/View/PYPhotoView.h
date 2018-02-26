@@ -58,6 +58,7 @@
 
 
 
+
 - (void)imageDidPinch:(UIPinchGestureRecognizer *)pinch;
 - (void)photoDidRotation:(UIRotationGestureRecognizer *)rotation;
 

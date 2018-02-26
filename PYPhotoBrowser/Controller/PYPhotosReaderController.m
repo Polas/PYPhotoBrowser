@@ -100,6 +100,31 @@
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.contentOffset = CGPointMake(self.selectedPhotoView.tag * self.collectionView.py_width, 0);
+    
+
+    
+    UILabel * close = [[UILabel alloc] init];
+    close.font = [UIFont fontWithName:@"Roboto-Bold" size:30];
+    close.textAlignment = NSTextAlignmentCenter;
+    close.textColor = UIColor.whiteColor;
+//    close.backgroundColor =  [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    close.text = @"←";
+    close.py_x = 16;
+    [close sizeToFit];
+    close.py_y = 20 + 40 / 2 - close.py_height / 2;
+    
+    UIView * backView = [[UIView alloc]init];
+    backView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    backView.py_y = close.py_y;
+    backView.py_x = close.py_x - 10;
+    backView.py_width = close.py_width + 20;
+    backView.py_height = close.py_height;
+    backView.userInteractionEnabled = NO;
+    
+    [self.view addSubview:backView];
+    [self.view addSubview:close];
+    
+
 }
 
 + (instancetype)readerController

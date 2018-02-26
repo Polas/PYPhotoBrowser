@@ -85,12 +85,23 @@ static BOOL _showOrHiddenAnimating;
         [self addSubview:loadFailureView];
         self.loadFailureView = loadFailureView;
         
+        
         // 设置原始锚点
         self.scrollViewAnchorPoint = self.layer.anchorPoint;
         
         // 默认放大倍数和旋转角度
         self.scale = 1.0;
         self.rotation = 0.0;
+        
+        UILabel * label = [[UILabel alloc] init];
+        label.font = [UIFont fontWithName:@"Roboto-Bold" size:12];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = UIColor.whiteColor;
+        self.statusLabel = label;
+        [self addSubview:self.statusLabel];
+        
+        
+
         
         // 删除图片
         UIImageView *deleteImageView = [[UIImageView alloc] init];
@@ -534,7 +545,8 @@ static CGSize originalSize;
             NSNotification *notification = [[NSNotification alloc] initWithName:PYSmallgImageDidClikedNotification object:self.photosView userInfo:userInfo];
             [center postNotification:notification];
         }
-    } else if (self.photosView.photosState == PYPhotosViewStateWillCompose) { // 未发布
+    }
+    else if (self.photosView.photosState == PYPhotosViewStateWillCompose) { // 未发布
         if (self.isPreview) { // 正在预览
             NSNotification *notifaction = [[NSNotification alloc] initWithName:PYChangeNavgationBarStateNotification object:self.photosView userInfo:userInfo];
             [center postNotification:notifaction];
@@ -686,9 +698,20 @@ static CGSize originalSize;
     
     // 设置删除图片位置
     self.deleteImageView.py_x = self.py_width - self.deleteImageView.py_width;
+    
+    self.statusLabel.py_height = 40;
+    self.statusLabel.py_x = 5;
+    self.statusLabel.py_width = self.py_width - 10;
+    self.statusLabel.py_y = self.py_height - self.statusLabel.py_height - 5;
+    
     // 设置加载进程和加载错误图片位置
     self.progressView.center = CGPointMake(self.py_width * 0.5, self.py_height * 0.5);
     self.loadFailureView.center = self.progressView.center;
+    
+    [self bringSubviewToFront:self.deleteImageView];
+    [self bringSubviewToFront:self.statusLabel];
+
+//    self.deleteImageView.
 }
 
 // 监听滚动，判断cell是否在屏幕上，初始化cell
