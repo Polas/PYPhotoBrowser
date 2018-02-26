@@ -54,6 +54,10 @@
 /** 是否隐藏删除按钮 */
 @property (nonatomic, assign) BOOL hideDeleteView;
 
+@property (nonatomic, weak) UILabel *statusLabel;
+
+
+
 - (void)imageDidPinch:(UIPinchGestureRecognizer *)pinch;
 - (void)photoDidRotation:(UIRotationGestureRecognizer *)rotation;
 
