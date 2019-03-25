@@ -11,7 +11,7 @@
 #import "PYPhoto.h"
 #import "PYPhotoBrowserConst.h"
 #import "UIImageView+WebCache.h"
-#import <NUIBarButtonItemRenderer.h>
+#import <NUI/UIView+NUI.h>
 
 @interface PYPhotosPreviewController ()<UIActionSheetDelegate, UICollectionViewDelegateFlowLayout>
 

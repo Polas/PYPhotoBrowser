@@ -6,7 +6,7 @@
 
 #import "PYPhotosNavigationController.h"
 #import "PYPhotoBrowserConst.h"
-#import <NUINavigationBarRenderer.h>
+#import <NUI/UIView+NUI.h>
 @implementation PYPhotosNavigationController
 
 // 初始化
