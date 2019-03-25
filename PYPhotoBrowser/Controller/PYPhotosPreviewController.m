@@ -11,6 +11,7 @@
 #import "PYPhoto.h"
 #import "PYPhotoBrowserConst.h"
 #import "UIImageView+WebCache.h"
+#import <NUIBarButtonItemRenderer.h>
 
 @interface PYPhotosPreviewController ()<UIActionSheetDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -46,10 +47,14 @@
     // 创建预览控制器
     PYPhotosPreviewController *readerVc = [[PYPhotosPreviewController alloc] initWithCollectionViewLayout:layout];
     
-    readerVc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"common.back", @"back") style:UIBarButtonItemStylePlain target:readerVc action:@selector(backAction)];
-    readerVc.navigationController.navigationBar.backIndicatorImage = nil;
-    readerVc.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
-    readerVc.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:readerVc action:@selector(trashDidClicked)];
+    readerVc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: @"← " style:UIBarButtonItemStylePlain target:readerVc action:@selector(backAction)];
+    readerVc.navigationItem.leftBarButtonItem.nuiClass = @"PYPhotoBackButton";
+    [readerVc.navigationItem.leftBarButtonItem applyNUI];
+//    readerVc.navigationItem.leftBarButtonItem.tintColor = readerVc.navigationCon
+//    readerVc.navigationController.navigationBar.backIndicatorImage = nil;
+//    readerVc.navigationController.navigationBar.nui
+//    readerVc.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
+//    readerVc.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:readerVc action:@selector(trashDidClicked)];
     
     return readerVc;
 }

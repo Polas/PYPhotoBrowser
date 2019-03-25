@@ -108,21 +108,21 @@
     close.textAlignment = NSTextAlignmentCenter;
     close.textColor = UIColor.whiteColor;
 //    close.backgroundColor =  [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    close.text = @"←";
-    close.py_x = 16;
-    [close sizeToFit];
-    close.py_y = 20 + 40 / 2 - close.py_height / 2;
+//    close.text = @"←";
+//    close.py_x = 16;
+//    [close sizeToFit];
+//    close.py_y = 20 + 40 / 2 - close.py_height / 2;
+//
+//    UIView * backView = [[UIView alloc]init];
+//    backView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+//    backView.py_y = close.py_y;
+//    backView.py_x = close.py_x - 10;
+//    backView.py_width = close.py_width + 20;
+//    backView.py_height = close.py_height;
+//    backView.userInteractionEnabled = NO;
     
-    UIView * backView = [[UIView alloc]init];
-    backView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    backView.py_y = close.py_y;
-    backView.py_x = close.py_x - 10;
-    backView.py_width = close.py_width + 20;
-    backView.py_height = close.py_height;
-    backView.userInteractionEnabled = NO;
-    
-    [self.view addSubview:backView];
-    [self.view addSubview:close];
+//    [self.view addSubview:backView];
+//    [self.view addSubview:close];
     
 
 }

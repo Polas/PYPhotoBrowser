@@ -6,7 +6,7 @@
 
 #import "PYPhotosNavigationController.h"
 #import "PYPhotoBrowserConst.h"
-
+#import <NUINavigationBarRenderer.h>
 @implementation PYPhotosNavigationController
 
 // 初始化
@@ -20,6 +20,8 @@
     [navBar setBackgroundImage:[UIImage imageNamed:@""] forBarMetrics:UIBarMetricsDefault];
     // 设置主题颜色
     navBar.tintColor = [UIColor whiteColor];
+    navBar.nuiClass = @"PYPhotoNavigationBar";
+    [navBar applyNUI];
     // 设置字体颜色
     NSDictionary *attr = @{ NSForegroundColorAttributeName : [UIColor whiteColor],
                             NSFontAttributeName : [UIFont boldSystemFontOfSize:20]
